@@ -2,6 +2,6 @@ package chess;
 
 public enum Result {
 	
-	BlackWin,WhiteWin,Draw;
+	BlackWin,WhiteWin,Draw,None;
 
 }

@@ -1,22 +1,44 @@
 package chess;
 
-import java.util.List;
+import java.util.*;
 
 import chessPieces.*;
 
 public class Game {
 	private List<Move> playedMoves;
 	private PieceColor turn;
-	private Player[] players;
+	private Player player1;
+	private Player player2;
 	private Result result;
 	private CheckStatus checkStatus;
+	private Board board;
 	
-	public void addMove() {
-		
+	public Game(ComputerPlayer computerPlayer1, ComputerPlayer computerPlayer2) {
+		this.player1 = new Player(computerPlayer1, PieceColor.White);
+		this.player2 = new Player(computerPlayer2, PieceColor.Black);
+		this.refresh();
 	}
 	
-	public void create() {
+	public void addMove() {
+		Player player;
+		if(turn == PieceColor.White) {
+			player = player1;
+		} else {
+			player = player2;
+		}
 		
+		Move move = player.makeMove(board);
+		
+		//Move in played Moves eintragen
+			
+	}
+	
+	public void refresh() {
+		playedMoves = new ArrayList<Move>();
+		turn = PieceColor.White;
+		result = Result.None;
+		checkStatus = CheckStatus.None;
+		board = new Board();
 	}
 	
 	public boolean isEnded() {
@@ -36,7 +58,7 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
-		Game game = new Game();
+		Game game = new Game(new ComputerPlayer(), new ComputerPlayer());
 		while(!game.isEnded()) {
 			game.addMove();
 		}
