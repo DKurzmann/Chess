@@ -1,30 +1,31 @@
 package chess;
 
-public class Square {
+import com.google.common.collect.*;
+
+public abstract class Square {
 	
-	private int row;
-	private int column;
+	protected final int coordinate;
 	
-	public Square(int row, int column) {
-		this.setRow(row);
-		this.setColumn(column); 
-	}
-
-	public int getColumn() {
-		return column;
-	}
-
-	public void setColumn(int column) {
-		this.column = column;
-	}
-
-	public int getRow() {
-		return row;
-	}
-
-	public void setRow(int row) {
-		this.row = row;
-	}
+//	private static final Map<Integer, EmptySquare> EMPTY_SQUARES = createAllPossibleEmptySquare();
 	
+	private Square(int coordinate) {
+		this.coordinate = coordinate;
+	}
+
+//	private Map<Integer, EmptySquare> createAllPossibleEmptyTiles() {
+//		final Map<Integer, EmptyTile> emptySquareMap = new HashMap<>();
+//		for(int i = 0; i < 64; i++) {
+//			emptySquareMap.put(i, new EmptySquare(i));
+//		}
+//		return ImmutableMap.
+//	}
+	
+	public static final class EmptySquare extends Square{
+
+		EmptySquare(final int coordinate) {
+			super(coordinate);
+		}
+		
+	}
 
 }
