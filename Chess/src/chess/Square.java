@@ -29,9 +29,9 @@ public abstract class Square {
 	
 	public abstract Piece getPiece();
 	
-	private static final class EmptySquare extends Square{
+	public static final class EmptySquare extends Square{
 
-		EmptySquare(final int coordinate) {
+		private EmptySquare(final int coordinate) {
 			super(coordinate);
 		}
 
@@ -47,11 +47,11 @@ public abstract class Square {
 		
 	}
 	
-	private static final class OccupiedSquare extends Square{
+	public static final class OccupiedSquare extends Square{
 		
 		private final Piece piece;
 		
-		OccupiedSquare(final int coordinate, final Piece piece) {
+		private OccupiedSquare(final int coordinate, final Piece piece) {
 			super(coordinate);
 			this.piece = piece;
 			
