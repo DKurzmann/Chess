@@ -14,5 +14,13 @@ public abstract class Piece {
 		 this.current_position = position;
 		 this.pieceColor = pieceColor;
 	 }
+	 
+	 public PieceColor getPieceColor() {
+		 return pieceColor;
+	 }
+	 
+	 public int getCurrentPosition() {
+		 return current_position;
+	 }
 
 }
