@@ -10,6 +10,7 @@ public abstract class Piece {
 	 protected final PieceColor pieceColor;
 	 protected final int current_position;
 	 
+	 
 	 Piece(final int position, final PieceColor pieceColor){
 		 this.current_position = position;
 		 this.pieceColor = pieceColor;
@@ -22,5 +23,15 @@ public abstract class Piece {
 	 public int getCurrentPosition() {
 		 return current_position;
 	 }
+
+	public abstract int[] getCandidateMoves();
+
+	public abstract boolean isFirstColumnExclusion(int currentPosition, int candidate_move);
+
+	public abstract boolean isSecondColumnExclusion(int currentPosition, int candidate_move);
+
+	public abstract boolean isSeventhColumnExclusion(int currentPosition, int candidate_move);
+
+	public abstract boolean isEigthColumnExclusion(int currentPosition, int candidate_move);
 
 }

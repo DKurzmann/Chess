@@ -19,7 +19,7 @@ public abstract class Square {
 
 	private static Map<Integer, EmptySquare> createAllPossibleEmptySquares() {
 		final Map<Integer, EmptySquare> emptySquareMap = new HashMap<>();
-		for(int i = 0; i < 64; i++) {
+		for(int i = 0; i < BoardUtils.NUM_TILES; i++) {
 			emptySquareMap.put(i, new EmptySquare(i));
 		}
 		return ImmutableMap.copyOf(emptySquareMap);

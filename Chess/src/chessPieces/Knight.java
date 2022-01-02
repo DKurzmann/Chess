@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import chess.Board;
+import chess.BoardUtils;
 import chess.Move;
 import chess.MoveCalculator;
 import chess.Square;
@@ -42,9 +43,31 @@ public class Knight extends Piece implements IPiece {
 
 	@Override
 	public List<Move> calculateMoves(Board board) {
-		MoveCalculator calculator = new MoveCalculator(this, CANDIDATE_MOVES, board);
+		MoveCalculator calculator = new MoveCalculator(this, board);
 		List<Move> moves = calculator.calculate();
 		return moves;
 	}
+
+	@Override
+	public int[] getCandidateMoves() {
+		return CANDIDATE_MOVES;
+	}
+	
+	public boolean isFirstColumnExclusion(int currentPosition, int candidateOffset) {
+		return BoardUtils.FIRST_COLUMN[currentPosition] && ((candidateOffset == -17 || candidateOffset == -10 || candidateOffset == 6 || candidateOffset == 15 ));
+	}
+	
+	public boolean isSecondColumnExclusion(int currentPosition, int candidateOffset) {
+		return BoardUtils.SECOND_COLUMN[currentPosition] && ((candidateOffset == -10 || candidateOffset == 6));
+	}
+	
+	public boolean isSeventhColumnExclusion(int currentPosition, int candidateOffset) {
+		return BoardUtils.SEVENTH_COLUMN[currentPosition] && ((candidateOffset == -6 || candidateOffset == 10));
+	}
+	
+	public boolean isEigthColumnExclusion(int currentPosition, int candidateOffset) {
+		return BoardUtils.EIGTH_COLUMN[currentPosition] && ((candidateOffset == -15 || candidateOffset == -6 || candidateOffset == 10 || candidateOffset == 17));
+	}
+
 
 }
